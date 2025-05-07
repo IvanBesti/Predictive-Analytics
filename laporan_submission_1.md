@@ -276,9 +276,9 @@ Hasil evaluasi model sebagai berikut:
 
 | Model               | Accuracy | Precision | Recall | F1-Score |
 |---------------------|----------|-----------|--------|----------|
-| **Logistic Regression** | **0.753** | **0.649**   | **0.672** | **0.660**  |
+| **Logistic Regression** | **0.753** | **0.649**   | **0.673** | **0.661**  |
 | Random Forest       | 0.727   | 0.618     | 0.618  | 0.618    |
-| SVM                 | 0.727    | 0.632     | 0.564  | 0.596    |
+| SVM                 | 0.727    | 0.633     | 0.564  | 0.596    |
 
 ### Pemilihan Model Terbaik
 
