@@ -205,22 +205,23 @@ Tiga algoritma klasifikasi digunakan dalam proyek ini. Pemilihan algoritma ini d
 #### 1. **Logistic Regression** 
 
 **Logistic Regression** adalah model klasifikasi yang digunakan untuk memprediksi probabilitas suatu kejadian dengan menggunakan fungsi logistik (sigmoid). Fungsi ini memetakan output ke dalam rentang 0 hingga 1, yang dapat diinterpretasikan sebagai probabilitas kelas positif. Model ini mengasumsikan hubungan linear antara fitur dan log-odds dari probabilitas kelas positif. Formula untuk prediksi probabilitas adalah:  
-$$ P(y = 1 | X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_n x_n)}} $$  
-Di sini, $$( \beta_0, \beta_1, \dots, \beta_n)$$ adalah koefisien model yang dipelajari selama pelatihan, dan $$( x_1, x_2, \dots, x_n )$$ adalah fitur input. Model ini menggunakan fungsi log-likelihood untuk mengoptimalkan koefisien selama proses pelatihan.
+![logreg](logreg.png)
+
+adalah fitur input. Model ini menggunakan fungsi log-likelihood untuk mengoptimalkan koefisien selama proses pelatihan.
    - **Kelebihan**: Cepat dilatih, menghasilkan output probabilistik, mudah diinterpretasikan, dan sangat cocok untuk klasifikasi biner.
    - **Kekurangan**: Terbatas dalam menangani relasi non-linear antar fitur.
 
 #### 2. **Random Forest**
 
 **Random Forest** adalah metode ensemble yang membangun banyak pohon keputusan (decision trees) dan menggabungkan hasil prediksi mereka untuk menghasilkan keputusan akhir. Setiap pohon dibangun menggunakan subset acak dari data dan fitur untuk mengurangi overfitting dan meningkatkan generalisasi. Proses pelatihan melibatkan pemilihan subset acak dari data dan pemilihan acak fitur pada setiap split pohon. Hasil prediksi untuk klasifikasi diambil dengan **voting** mayoritas dari semua pohon, sedangkan untuk regresi menggunakan rata-rata dari hasil pohon. Proses ini dapat digambarkan dengan formula berikut:  
-$$ f(x) = \frac{1}{N} \sum_{i=1}^{N} T_i(x) $$  
+![rf](rf.png)  
 Di mana \( f(x) \) adalah prediksi akhir, \( N \) adalah jumlah pohon dalam hutan, dan \( T_i(x) \) adalah prediksi dari pohon ke-i untuk input \( x \).
    - **Kelebihan**: Mampu menangani outlier dan relasi non-linear, serta tahan terhadap overfitting.
    - **Kekurangan**: Lebih kompleks, lebih sulit dijelaskan kepada pihak non-teknis, dan bisa kurang efisien saat fitur tidak relevan.
 
 #### 3. **Support Vector Machine (SVM)**
 **Support Vector Machine (SVM)** adalah algoritma klasifikasi yang memetakan data ke ruang vektor berdimensi lebih tinggi dan mencari **hyperplane** yang memaksimalkan margin antara dua kelas. Dalam SVM, tujuan utama adalah menemukan hyperplane yang memisahkan dua kelas dengan margin terbesar. Formula untuk mencari hyperplane yang optimal adalah sebagai berikut:  
-$$ w^T x + b = 0 $$  
+![svm](svm.png)  
 Di sini, \( w \) adalah vektor bobot, \( b \) adalah bias, dan \( x \) adalah input data. SVM juga menggunakan fungsi kernel untuk mengubah data ke ruang yang lebih tinggi jika data tidak dapat dipisahkan secara linear. Fungsi kernel yang umum digunakan termasuk linear, polinomial, dan Gaussian Radial Basis Function (RBF). 
 SVM berfokus pada **support vectors**, yaitu data titik yang paling dekat dengan hyperplane, yang menentukan margin.
    - **Kelebihan**: Efektif untuk dataset berdimensi menengah dan mampu membangun margin klasifikasi yang kuat.
@@ -305,9 +306,9 @@ Untuk mengevaluasi performa model dalam tugas klasifikasi biner (diabetes atau t
 - **Accuracy**  
   Persentase prediksi yang benar dari keseluruhan data.  
   Rumus:  
-  $$
-  \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-  $$
+  
+  ![acc](acc.png)
+
   Di mana:
   - **TP (True Positive)**: Prediksi positif yang benar (diabetes → diabetes)
   - **TN (True Negative)**: Prediksi negatif yang benar (tidak diabetes → tidak diabetes)
@@ -316,23 +317,23 @@ Untuk mengevaluasi performa model dalam tugas klasifikasi biner (diabetes atau t
 
 - **Precision**  
   Seberapa tepat model saat memprediksi pasien sebagai penderita diabetes.  
-  $$
-  \text{Precision} = \frac{TP}{TP + FP}
-  $$
+  
+  ![prec](prec.png)
+
   Artinya, dari seluruh kasus yang diprediksi sebagai diabetes, seberapa banyak yang benar-benar diabetes.
 
 - **Recall**  
   Kemampuan model untuk menemukan semua kasus diabetes yang sebenarnya ada.  
-  $$
-  \text{Recall} = \frac{TP}{TP + FN}
-  $$
+  
+  ![recall](recall.png)
+
   Semakin tinggi recall, semakin sedikit pasien diabetes yang luput dari deteksi (false negative rendah).
 
 - **F1-Score**  
   Rata-rata harmonis dari precision dan recall, menyeimbangkan keduanya.  
-  $$
-  \text{F1-Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-  $$
+  
+  ![f1](f1.png)
+
   Berguna saat kita perlu mempertimbangkan **kesalahan dua arah (false positive & false negative)** secara bersamaan, seperti dalam diagnosis penyakit.
 
 ### Hasil Evaluasi Model
